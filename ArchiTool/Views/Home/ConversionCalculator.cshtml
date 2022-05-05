@@ -1,0 +1,47 @@
+﻿@model ArchiTool.ArchiToolLogic.Models.Calculator
+
+@{
+    ViewData["Title"] = "ConversionCalculator";
+}
+@using (Html.BeginForm("Save", "Home", FormMethod.Post))
+{
+<div class="calculator">
+    <div class="input-select-group-two">
+        <label class="input-label input-label-calc"></label>
+        <label class="input-label input-label-narrow" for="units">Units</label>
+        @Html.TextBoxFor(m => m.DisplayEquation, new { @class = "input-display", @readonly = "readonly" })
+        @Html.DropDownListFor(m => m.AnswerFormatSelected,
+           new SelectList(Model.Answers), new { @class = "select-box select-box-right select-box-narrow"})
+    </div>
+    <div class="calculator-container">
+
+        @Html.ActionLink("ft", "CalcButton", "Home", new { button = "ft" }, new { @class = "button" })
+        @Html.ActionLink("in", "CalcButton", "Home", new { button = "in" }, new { @class = "button" })
+        @Html.ActionLink("Clear", "CalcButton", "Home", new { button = "Clear" }, new { @class = "button" })
+        @Html.ActionLink(" ", "CalcButton", "Home", new { button = "BckSp" }, new { @class = "button button-icon" })
+        <button class="button" type="submit">Save</button>
+        @Html.ActionLink("b/c", "CalcButton", "Home", new { button = "fr" }, new { @class = "button fraction-button" })
+        @Html.ActionLink("A b/c", "CalcButton", "Home", new { button = "mn" }, new { @class = "button fraction-button" })
+        @Html.ActionLink("÷", "CalcButton", "Home", new { button = "/" }, new { @class = "button" })
+        @Html.ActionLink("7", "CalcButton", "Home", new { button = "7" }, new { @class = "button" })
+        @Html.ActionLink("8", "CalcButton", "Home", new { button = "8" }, new { @class = "button" })
+        @Html.ActionLink("9", "CalcButton", "Home", new { button = "9" }, new { @class = "button" })
+        @Html.ActionLink("x", "CalcButton", "Home", new { button = "x" }, new { @class = "button" })
+        @Html.ActionLink("4", "CalcButton", "Home", new { button = "4" }, new { @class = "button" })
+        @Html.ActionLink("5", "CalcButton", "Home", new { button = "5" }, new { @class = "button" })
+        @Html.ActionLink("6", "CalcButton", "Home", new { button = "6" }, new { @class = "button" })
+        @Html.ActionLink("-", "CalcButton", "Home", new { button = "-" }, new { @class = "button" })
+        @Html.ActionLink("1", "CalcButton", "Home", new { button = "1" }, new { @class = "button" })
+        @Html.ActionLink("2", "CalcButton", "Home", new { button = "2" }, new { @class = "button" })
+        @Html.ActionLink("3", "CalcButton", "Home", new { button = "3" }, new { @class = "button" })
+        @Html.ActionLink("+", "CalcButton", "Home", new { button = "+" }, new { @class = "button" })
+        @Html.ActionLink("(-)", "CalcButton", "Home", new { button = "(-)" }, new { @class = "button" })
+        @Html.ActionLink("0", "CalcButton", "Home", new { button = "0" }, new { @class = "button" })
+        @Html.ActionLink(".", "CalcButton", "Home", new { button = "." }, new { @class = "button" })
+        @Html.ActionLink("=", "CalcButton", "Home", new { button = "=" }, new { @class = "button" })
+    </div>
+</div>
+}
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

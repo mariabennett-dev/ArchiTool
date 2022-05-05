@@ -1,0 +1,18 @@
+﻿@model IEnumerable<ArchiTool.ArchiToolLogic.Models.Equation>
+
+@{
+    ViewData["Title"] = "ConversionCalc History";
+}
+
+    @foreach(var item in Model)
+    {
+        <div class = "input-select-group-two">
+        @Html.TextBoxFor(modelItem => item.EquationString, new { @class = "conversion-hist-display", @readonly = "readonly"})
+        @Html.ActionLink("Delete", "DeleteConversionHistory", "Home", new { id = item.Id }, new { @class = "button history-column-button" })
+        </div>
+        <hr />
+    }
+        <div class = "input-select-group-two">
+             <a class="button conversion-hist-export" target = "_blank" asp-action="ExportConversionHistory">Export</a>
+             <a class = "button conversion-hist-clear" asp-action = "ClearConversionCalcHistory">Clear All</a>
+        </div>

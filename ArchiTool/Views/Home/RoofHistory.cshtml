@@ -1,0 +1,31 @@
+﻿@model IEnumerable<ArchiTool.ArchiToolLogic.Models.RoofDimensions>
+
+@{
+    ViewData["Title"] = "RoofCalc History";
+}
+
+
+    @foreach (var item in Model)
+    {
+        <div class="display-value-group-five">
+            @Html.TextBoxFor(modelItem => item.SlopeName, new { @class = "input-label editable-input-label" })
+            @Html.TextBoxFor(modelItem => item.DistanceName, new { @class = "input-label editable-input-label" })
+            @Html.TextBoxFor(modelItem => item.ECHName, new { @class = "input-label editable-input-label" })
+            @Html.TextBoxFor(modelItem => item.ICHName, new { @class = "input-label editable-input-label" })
+            <label></label>
+            <div class="history-display">@Html.DisplayFor(modelItem => item.SlopeString)</div>
+            <div class="history-display">@Html.DisplayFor(modelItem => item.DistanceString)</div>
+            <div class="history-display">@Html.DisplayFor(modelItem => item.ECHString)</div>
+            <div class="history-display">@Html.DisplayFor(modelItem => item.ICHString)</div>
+            @Html.ActionLink("Delete", "Delete", "Home", new { id = item.Id }, new { @class = "button history-column-button" })
+        </div>
+        <hr />
+    }
+
+        <div class = "display-value-group-five" >
+             <label class = "history-display"></label>
+             <label class = "history-display"></label>
+             <label class = "history-display"></label>
+             <a class="button export-button" target = "_blank" asp-action="Export">Export</a>
+             <a class = "button export-button" asp-action = "ClearRoofHistory">Clear All</a>
+        </div>

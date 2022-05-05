@@ -1,0 +1,26 @@
+﻿@model IEnumerable<ArchiTool.ArchiToolLogic.Models.RoofDimensions>
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Inter">
+    <link rel="stylesheet" href="~/css/site.css" />
+@{
+    ViewData["Title"] = "Export";
+}
+
+<h5>RoofCalc History</h5>
+
+@foreach (var item in Model)
+    {
+        <div class="display-value-group-four">
+            @Html.TextBoxFor(modelItem => item.SlopeName, new { @class = "history-label" })
+            @Html.TextBoxFor(modelItem => item.DistanceName, new { @class = "history-label" })
+            @Html.TextBoxFor(modelItem => item.ECHName, new { @class = "history-label" })
+            @Html.TextBoxFor(modelItem => item.ICHName, new { @class = "history-label" })
+        </div>
+        <div class="display-value-group-four">
+            @Html.TextBoxFor(modelItem => item.SlopeString, new { @class = "history-display", @readonly = "readonly"})
+            @Html.TextBoxFor(modelItem => item.DistanceString, new { @class = "history-display", @readonly = "readonly"})
+            @Html.TextBoxFor(modelItem => item.ECHString, new { @class = "history-display", @readonly = "readonly"})
+            @Html.TextBoxFor(modelItem => item.ICHString, new { @class = "history-display", @readonly = "readonly"})
+        </div>
+        <hr />
+    }

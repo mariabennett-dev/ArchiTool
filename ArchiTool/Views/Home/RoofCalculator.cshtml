@@ -1,0 +1,91 @@
+﻿@model ArchiTool.ArchiToolLogic.Models.RoofDimensions
+
+@{
+    ViewData["Title"] = "RoofCalculator";
+}
+
+@Html.TextBoxFor(m => m.ErrorMessage, new { @class = "message-display", @readonly = "readonly"})
+<hr />
+@using (Html.BeginForm("Calculate", "Home", FormMethod.Post))
+{
+    <div class="roofcalc-container">
+        <div class="input-select-group">
+            @Html.TextBoxFor(m => m.SlopeName, new { @class = "input-label editable-input-label input-display-roof" })
+            <label class="input-label" for="slope-unit-select">Units</label>
+             <label></label>
+            @Html.TextBoxFor(m => m.SlopeString, new { @class = "input-display input-display-roof"})
+            @Html.DropDownListFor(m => m.SlopeDimensionFormatSelected,
+            new SelectList(Model.SlopeDimensionFormat), 
+            new { @class = "select-box", @onchange = "SelectedValue(this, SlopeString)" })
+            @Html.ActionLink("Clear", "ClearDimension", "Home", new { dimension = "Slope" }, new { @class = "button calculate-button" })
+        </div>
+        <div class="input-select-group">
+            @Html.TextBoxFor(m => m.DistanceName, new { @class = "input-label editable-input-label input-display-roof" })
+            <label class="input-label" for="distance-unit-select">Units</label>
+             <label></label>
+            @Html.TextBoxFor(m => m.DistanceString, new { @class = "input-display input-display-roof"})
+            @Html.DropDownListFor(m => m.DistanceDimensionFormatSelected,
+           new SelectList(Model.DimensionFormat), new { @class = "select-box",
+               @onchange = "SelectedValue(this, DistanceString)" })
+            @Html.ActionLink("Clear", "ClearDimension", "Home", new { dimension = "Distance" }, new { @class = "button calculate-button" })
+        </div>
+        <div class="input-select-group">
+            @Html.TextBoxFor(m => m.ECHName, new { @class = "input-label editable-input-label input-display-roof" })
+            <label class="input-label" for="ech-unit-select">Units</label>
+             <label></label>
+            @Html.TextBoxFor(m => m.ECHString, new { @class = "input-display input-display-roof"})
+            @Html.DropDownListFor(m => m.ECHDimensionFormatSelected,
+            new SelectList(Model.DimensionFormat), new { @class = "select-box",
+                @onchange = "SelectedValue(this, ECHString)"})
+            @Html.ActionLink("Clear", "ClearDimension", "Home", new { dimension = "ECH" }, new { @class = "button calculate-button" })
+        </div>
+        <div class="input-select-group">
+            @Html.TextBoxFor(m => m.ICHName, new { @class = "input-label editable-input-label input-display-roof" })
+            <label class="input-label" for="ich-unit-select">Units</label>
+             <label></label>
+            @Html.TextBoxFor(m => m.ICHString, new { @class = "input-display input-display-roof"})
+            @Html.DropDownListFor(m => m.ICHDimensionFormatSelected,
+            new SelectList(Model.DimensionFormat), new { @class = "select-box", @onchange = "SelectedValue(this, ICHString)"})
+            @Html.ActionLink("Clear", "ClearDimension", "Home", new { dimension = "ICH" }, new { @class = "button calculate-button" })
+        </div>
+        <div class="input-select-group align-right">
+            <label></label>
+            <button class="button calculate-button bottom-row-button" type="submit">Calculate</button>
+            @Html.ActionLink("Clear All", "ClearRoofCalc", "Home", new { button = "Clear All" }, new { @class = "button calculate-button bottom-row-button" })
+        </div>
+    </div>
+
+    
+}
+
+@section Scripts {
+    
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+<script>  
+    /*To get selected value an text of dropdownlist  
+    function SelectedValue(ddlObject, txtBox)  
+    {  
+        //Selected value of dropdownlist  
+        var selectedValue = ddlObject.value;  
+        //Selected text of dropdownlist  
+        var selectedText = ddlObject.options[ddlObject.selectedIndex].innerHTML;
+
+        if (selectedText == "Select Input Units") {
+            
+            txtBox.disabled = true;
+        }
+        else
+        {
+
+            txtBox.disabled = false;
+            txtBox.enabled = true;
+        }
+          
+        //alert popup with detail of selected value and text  
+        //alert(" Selected Value: " + selectedValue+" -- "+"Selected Text: " + selectedText ) ;  
+    }*/  
+</script>
+
+					
+			
